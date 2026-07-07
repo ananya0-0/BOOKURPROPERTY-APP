@@ -1,17 +1,26 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'http://localhost:5000/api' });
-
-// Attach token if logged in
-API.interceptors.request.use((req) => {
-  const token = localStorage.getItem('token');
-  if (token) req.headers.Authorization = `Bearer ${token}`;
-  return req;
+const API = axios.create({
+  baseURL: process.env.REACT_APP_API_BASE_URL || 'http://localhost:3001',
+  withCredentials: true,
+  headers: { 'Content-Type': 'application/json' },
 });
 
-export const login = (data) => API.post('/auth/login', data);
-export const getProperties = () => API.get('/properties');
-export const getProperty = (id) => API.get(`/properties/${id}`);
-export const createBooking = (data) => API.post('/bookings', data);
-export const getMyBookings = () => API.get('/bookings/my');
-export const cancelBooking = (id) => API.patch(`/bookings/${id}/cancel`);
+API.interceptors.request.use((config) => {
+  const token = localStorage.getItem('authToken');
+  if (token) config.headers.Authorization = `Bearer ${token}`;
+  return config;
+});
+
+API.interceptors.response.use(
+  (res) => res,
+  (err) => {
+    if (err.response?.status === 401) {
+      localStorage.removeItem('authToken');
+      window.location.href = '/login';
+    }
+    return Promise.reject(err);
+  }
+);
+
+export default API;
