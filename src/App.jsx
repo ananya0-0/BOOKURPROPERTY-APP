@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/shared/Navbar';
+import Footer from './components/shared/Footer';
 import Login from './pages/Login';
 import Home from './pages/Home';
 import PropertyDetail from './pages/PropertyDetail';
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/confirmation/:bookingId" element={<Confirmation />} />
         <Route path="/my-bookings" element={<MyBookings />} />
       </Routes>
+      <Footer />
     </BrowserRouter>
   );
 }

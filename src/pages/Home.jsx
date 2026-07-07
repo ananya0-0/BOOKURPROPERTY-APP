@@ -9,6 +9,10 @@ import PremiumListings from '../components/home/PremiumListings';
 import VerifiedBuilders from '../components/home/VerifiedBuilders';
 import HighDemandLocalities from '../components/home/HighDemandLocalities';
 import RecommendedSellers from '../components/home/RecommendedSellers';
+import Testimonials from '../components/home/Testimonials';
+import PostPropertyCTA from '../components/home/PostPropertyCTA';
+import AppDownload from '../components/home/AppDownload';
+import FloatingButtons from '../components/home/FloatingButtons';
 import PropertyList from '../components/properties/PropertyList';
 import { MOCK_PROPERTIES } from '../data/mockProperties';
 
@@ -53,6 +57,10 @@ export default function Home() {
         <VerifiedBuilders />
         <HighDemandLocalities />
         <RecommendedSellers />
+        <Testimonials />
+        <PostPropertyCTA />
+        <AppDownload />
+        <FloatingButtons />
 
         <div style={{ marginBottom: 24 }}>
           <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>All Properties</h2>
