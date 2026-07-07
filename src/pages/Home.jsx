@@ -6,6 +6,9 @@ import PropertyTypeGrid from '../components/home/PropertyTypeGrid';
 import BestChoice from '../components/home/BestChoice';
 import RecommendedProperties from '../components/home/RecommendedProperties';
 import PremiumListings from '../components/home/PremiumListings';
+import VerifiedBuilders from '../components/home/VerifiedBuilders';
+import HighDemandLocalities from '../components/home/HighDemandLocalities';
+import RecommendedSellers from '../components/home/RecommendedSellers';
 import PropertyList from '../components/properties/PropertyList';
 import { MOCK_PROPERTIES } from '../data/mockProperties';
 
@@ -47,6 +50,9 @@ export default function Home() {
         <BestChoice />
         <RecommendedProperties />
         <PremiumListings />
+        <VerifiedBuilders />
+        <HighDemandLocalities />
+        <RecommendedSellers />
 
         <div style={{ marginBottom: 24 }}>
           <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>All Properties</h2>
