@@ -1,12 +1,12 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import PropertySpecs from '../components/properties/PropertySpecs';
-import PropertyScore from '../components/properties/PropertyScore';
-import AgentCard from '../components/properties/AgentCard';
-import { formatPrice } from '../utils/formatters';
-import { getTypeLabel } from '../data/propertyTypes';
-import { getPropertyById } from '../data/mockProperties';
-import Button from '../components/shared/Button';
+import PropertySpecs from './PropertySpecs';
+import PropertyScore from './PropertyScore';
+import AgentCard from './AgentCard';
+import { formatPrice } from '../../utils/formatters';
+import { getTypeLabel } from '../../data/propertyTypes';
+import { getPropertyById } from '../../data/mockProperties';
+import Button from '../shared/Button';
 
 export default function PropertyDetail() {
   const { id } = useParams();
