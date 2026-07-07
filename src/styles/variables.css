@@ -1,0 +1,17 @@
+:root {
+  --primary: #6B4FBB;
+  --primary-light: #F3E8FF;
+  --success: #10B981;
+  --danger: #EF4444;
+  --text: #1F1F1F;
+  --text-light: #6B7280;
+  --border: #E5E7EB;
+  --bg: #FFFFFF;
+  --bg-gray: #F9FAFB;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --shadow: 0 2px 8px rgba(0,0,0,0.08);
+
+  --font: 'Inter', sans-serif;
+}
