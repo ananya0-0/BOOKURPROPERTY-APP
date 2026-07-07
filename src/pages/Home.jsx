@@ -3,6 +3,9 @@ import HeroSection from '../components/home/HeroSection';
 import CategoryTabs from '../components/home/CategoryTabs';
 import SearchBar from '../components/home/SearchBar';
 import PropertyTypeGrid from '../components/home/PropertyTypeGrid';
+import BestChoice from '../components/home/BestChoice';
+import RecommendedProperties from '../components/home/RecommendedProperties';
+import PremiumListings from '../components/home/PremiumListings';
 import PropertyList from '../components/properties/PropertyList';
 import { MOCK_PROPERTIES } from '../data/mockProperties';
 
@@ -41,7 +44,14 @@ export default function Home() {
 
         <PropertyTypeGrid />
 
-        <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 16 }}>Properties</h2>
+        <BestChoice />
+        <RecommendedProperties />
+        <PremiumListings />
+
+        <div style={{ marginBottom: 24 }}>
+          <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 4 }}>All Properties</h2>
+          <p style={{ fontSize: 13, color: 'var(--text-light)', margin: 0 }}>Browse our complete listing</p>
+        </div>
         <PropertyList properties={filtered} />
       </div>
     </div>
