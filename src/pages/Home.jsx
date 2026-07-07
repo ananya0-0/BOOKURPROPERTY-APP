@@ -1,34 +1,49 @@
 import React, { useState, useMemo } from 'react';
+import HeroSection from '../components/home/HeroSection';
+import CategoryTabs from '../components/home/CategoryTabs';
+import SearchBar from '../components/home/SearchBar';
+import PropertyTypeGrid from '../components/home/PropertyTypeGrid';
 import PropertyList from '../components/properties/PropertyList';
-import PropertyFilter from '../components/properties/PropertyFilter';
 import { MOCK_PROPERTIES } from '../data/mockProperties';
 
 export default function Home() {
-  const [search, setSearch] = useState('');
-  const [intent, setIntent] = useState('');
+  const [activeTab, setActiveTab] = useState('Buy');
+  const [city, setCity] = useState('');
+  const [propertyType, setPropertyType] = useState('');
+  const [searchQuery, setSearchQuery] = useState('');
 
   const filtered = useMemo(() => {
     return MOCK_PROPERTIES.filter(p => {
-      const matchSearch = !search ||
-        p.title?.toLowerCase().includes(search.toLowerCase()) ||
-        p.location?.localityName?.toLowerCase().includes(search.toLowerCase()) ||
-        p.location?.cityName?.toLowerCase().includes(search.toLowerCase());
-      const matchIntent = !intent || p.intent === intent;
-      return matchSearch && matchIntent;
+      const matchCity = !city || p.location?.cityName?.toLowerCase() === city.toLowerCase();
+      const matchSearch = !searchQuery ||
+        p.title?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+        p.location?.localityName?.toLowerCase().includes(searchQuery.toLowerCase());
+      return matchCity && matchSearch;
     });
-  }, [search, intent]);
+  }, [city, searchQuery]);
+
+  const handleSearch = () => {
+    setSearchQuery(`${propertyType} ${city}`.trim());
+  };
 
   return (
-    <div style={{ maxWidth: 1200, margin: '0 auto', padding: 24 }}>
-      <h1 style={{ fontSize: 24, fontWeight: 700, marginBottom: 4 }}>Properties</h1>
-      <p style={{ color: 'var(--text-light)', marginBottom: 20, fontSize: 14 }}>
-        {MOCK_PROPERTIES.length} properties available
-      </p>
-      <PropertyFilter
-        search={search} onSearchChange={setSearch}
-        intent={intent} onIntentChange={setIntent}
-      />
-      <PropertyList properties={filtered} />
+    <div>
+      <HeroSection />
+
+      <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px' }}>
+        <SearchBar
+          city={city} propertyType={propertyType}
+          onCityChange={setCity} onTypeChange={setPropertyType}
+          onSearch={handleSearch}
+        />
+
+        <CategoryTabs activeTab={activeTab} onChange={setActiveTab} />
+
+        <PropertyTypeGrid />
+
+        <h2 style={{ fontSize: 22, fontWeight: 700, marginBottom: 16 }}>Properties</h2>
+        <PropertyList properties={filtered} />
+      </div>
     </div>
   );
 }
