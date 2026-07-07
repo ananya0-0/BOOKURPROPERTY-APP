@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
-import Properties from './pages/Properties';
+import Home from './pages/Home';
 import PropertyDetail from './pages/PropertyDetail';
 import BookAppointment from './pages/BookAppointment';
 import Confirmation from './pages/Confirmation';
@@ -13,7 +13,7 @@ export default function App() {
     <BrowserRouter>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Properties />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/property/:id" element={<PropertyDetail />} />
         <Route path="/book/:propertyId" element={<BookAppointment />} />
